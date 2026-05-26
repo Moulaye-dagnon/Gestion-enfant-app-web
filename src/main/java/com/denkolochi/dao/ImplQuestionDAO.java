@@ -10,7 +10,7 @@ import com.denkolochi.configuration.ConnexionDB;
 import com.denkolochi.model.Question;
 
 public class ImplQuestionDAO implements Repository<Question, Integer> {
-    Connection con = ConnexionDB.getConexion();
+    Connection con = ConnexionDB.getInstance().getconnection();
 
     @Override
     public void save(Question entity) {

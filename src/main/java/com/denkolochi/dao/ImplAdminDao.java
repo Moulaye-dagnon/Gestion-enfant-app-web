@@ -12,7 +12,7 @@ import com.denkolochi.enumeration.RoleEnum;
 
 public class ImplAdminDao implements Repository <Admins , Integer> {
     
-    Connection con = ConnexionDB.getConexion();
+    Connection con =ConnexionDB.getInstance().getconnection();
 
     @Override
     public void save(Admins admin) {

@@ -12,11 +12,11 @@ import com.denkolochi.configuration.ConnexionDB;
 import com.denkolochi.model.Enfant;
 
 public class ImplEnfantDAO implements Repository<Enfant, Integer> {
+	Connection con = ConnexionDB.getInstance().getconnection();
 
     @Override
     public void save(Enfant entity) {
         try {
-            Connection con = ConnexionDB.getConexion();
             String sql = "INSERT INTO enfants (nom, prenom, date_naissance, sexe, id_parent) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, entity.getNom());
@@ -36,7 +36,6 @@ public class ImplEnfantDAO implements Repository<Enfant, Integer> {
     @Override
     public Enfant findById(Integer id_enfants) {
         try {
-            Connection con = ConnexionDB.getConexion();
             String sql = "SELECT * FROM enfants WHERE id_enfants = ?";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1, id_enfants);
@@ -62,7 +61,6 @@ public class ImplEnfantDAO implements Repository<Enfant, Integer> {
     public List<Enfant> findAll() {
         List<Enfant> enfants = new ArrayList<>();
         try {
-            Connection con = ConnexionDB.getConexion();
             String sql = "SELECT * FROM enfants";  // ✅ nom correct
             java.sql.Statement stm = con.createStatement();
             ResultSet resultat = stm.executeQuery(sql);
@@ -86,7 +84,6 @@ public class ImplEnfantDAO implements Repository<Enfant, Integer> {
     @Override
     public void delete(Integer id) {
         try {
-            Connection con = ConnexionDB.getConexion();
             String sql = "DELETE FROM enfants WHERE id_enfants = ?";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1, id);
@@ -100,7 +97,6 @@ public class ImplEnfantDAO implements Repository<Enfant, Integer> {
     @Override
     public void update(Integer id, Enfant entity) {
         try {
-            Connection con = ConnexionDB.getConexion();
             // ✅ "UPDATE" sans "table", nom de table correct
             String sql = "UPDATE enfants SET nom = ?, prenom = ?, date_naissance = ?, id_parent = ? WHERE id_enfants = ?";
             PreparedStatement stm = con.prepareStatement(sql);
@@ -122,7 +118,6 @@ public class ImplEnfantDAO implements Repository<Enfant, Integer> {
      public List<Enfant> findAllByIdParent(int id_parent) {
         List<Enfant> enfants = new ArrayList<>();
         try {
-            Connection con = ConnexionDB.getConexion();
             String sql = "SELECT * FROM enfants WHERE id_parent = ?";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1, id_parent);
@@ -146,7 +141,6 @@ public class ImplEnfantDAO implements Repository<Enfant, Integer> {
 
     public Enfant saveEnfant(Enfant entity) {
         try {
-            Connection con = ConnexionDB.getConexion();
             String sql = "INSERT INTO enfants (nom, prenom, date_naissance, sexe, id_parent) VALUES (?, ?, ?, ?, ?)";
             
              PreparedStatement stm = con.prepareStatement(
