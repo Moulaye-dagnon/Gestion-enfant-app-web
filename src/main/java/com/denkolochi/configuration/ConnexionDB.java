@@ -34,7 +34,7 @@ public class ConnexionDB {
 
     public  Connection getconnection() {
        try {
-           if (instance == null | connection.isClosed()){
+           if (instance == null || connection.isClosed()){
                 System.out.println("Reconnexion en cours...");
                 instance = new  ConnexionDB();
             }
