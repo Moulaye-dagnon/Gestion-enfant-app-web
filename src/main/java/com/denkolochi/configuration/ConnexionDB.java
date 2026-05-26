@@ -6,18 +6,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 public class ConnexionDB {
 	
-	
+		private static  Connection connexionDBInstance  ;
+		private ConnexionDB() {}
+		
 
 	    public static Connection getConexion() {
-	        try {
-	            Connection conexion = DriverManager.getConnection(DbConstConfig.url  ,DbConstConfig.utilisateur ,DbConstConfig.mot_de_passe);
-	            System.out.println("Connecté à la base de données !");
-	            return conexion;
-	        } catch (Exception e) {
-	            System.out.println("Erreur de connexion : " + e.getMessage());
-	            return null;
-	        }
+	    	if(connexionDBInstance == null ) {
+	    		 try {
+	 	            Connection connexionDBInstance = DriverManager.getConnection(DbConstConfig.url  ,DbConstConfig.utilisateur ,DbConstConfig.mot_de_passe);
+	 	            System.out.println("Connecté à la base de données !");
+	 	            return connexionDBInstance;
+	 	        } catch (Exception e) {
+	 	            System.out.println("Erreur de connexion : " + e.getMessage());
+	 	            return null;
+	 	        }
+	    	}
+	    	return connexionDBInstance; 
+	       
 	    }
+	    
+	
 	    
 	    public static void main(String[] args) {
 	        try {
