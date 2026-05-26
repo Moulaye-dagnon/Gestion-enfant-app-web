@@ -10,9 +10,9 @@ import com.denkolochi.model.Option;
 
 public class ImplOptionDao implements Repository<Option, Integer> {
 
+	Connection con = ConnexionDB.getInstance().getconnection();
 @Override
 public void save(Option entity) {
-    Connection con = ConnexionDB.getConexion();
     String sql = "INSERT INTO option (id, texte, estCorrecte) VALUES (?,?,?,?)";
     try (PreparedStatement pont = con.prepareStatement(sql)) {
         pont.setInt(1, entity.getId());
@@ -29,52 +29,7 @@ public void save(Option entity) {
         e.printStackTrace();
     }
 }
-//     @Override
-//     public Option findById(Integer id) {
-//         Connection con = ConnexionDB.getConexion();
-//         String sql = "SELECT * FROM option WHERE id = ?";
-//         try (PreparedStatement pont = con.prepareStatement(sql)) {
-//             pont.setInt(1, id);
-//             ResultSet rs = pont.executeQuery();
-//             if (rs.next()) {
-//                 Option option = new Option();
-//                 option.setId(rs.getInt("id"));
-//                 option.setTexte(rs.getString("texte"));
-//                 option.setEstCorrecte(rs.getBoolean("estCorrecte"));
-//                 return option;
-//             }
-//         } catch (SQLException e) {
-//             e.printStackTrace();
-//         }
-//         return null;
-//     }
 
-//     @Override
-//     public List<Option> findAll() {
-//         Connection con = ConnexionDB.getConexion();
-//         String sql = "SELECT * FROM option";
-//         List<Option> options = new ArrayList<>();
-//         try (PreparedStatement pont = con.prepareStatement(sql)) {
-//             ResultSet rs = pont.executeQuery();
-//             while (rs.next()) {
-//                 Option option = new Option();
-//     }catch (SQLException e) {
-//             e.printStackTrace();
-//         }
-//         return options;
-//     }
-
-
-//     @Override
-//     public void delete(Integer id) {
-//         Connection con = ConnexionDB.getConexion();
-//         String sql = "DELETE FROM option WHERE id = ?";
-//  }
-
-//     @Override
-//     public void updtae(Integer id, Option entity)
-//         throw new UnsupportedOperationException("Unimplemented method 'updtae'");
-//     }
     @Override
     public void delete(Integer id) {
         // TODO Auto-generated method stub
@@ -88,7 +43,6 @@ public void save(Option entity) {
 
     @Override
     public Option findById(Integer id) {
-        Connection con = ConnexionDB.getConexion();
         String sql = "SELECT * FROM options WHERE id_options = ?";
         try (PreparedStatement pont = con.prepareStatement(sql)) {
             pont.setInt(1, id);
@@ -114,7 +68,6 @@ public void save(Option entity) {
 
     public List<Option> findByIdQuestion(int id_question) {
 
-    Connection con = ConnexionDB.getConexion();
 
     String sql = "SELECT * FROM options WHERE id_question = ?";
 

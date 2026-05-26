@@ -11,7 +11,7 @@ public class ImplcorporelleDao implements Repository<Corporelle, Integer> {
 
     @Override
     public void save( Corporelle entity) {
-        Connection con = ConnexionDB.getConexion();
+        Connection con = ConnexionDB.getInstance().getconnection();
         String sql = "INSERT INTO corporelles VALUES (?,?,?,?,?,?)";
                 try (PreparedStatement pont = con.prepareStatement(sql)) {
                     pont.setNull(1, java.sql.Types.INTEGER);

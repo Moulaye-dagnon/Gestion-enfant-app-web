@@ -20,5 +20,9 @@
 Thumbs.db
 
 
-#Db configuration file 
+
+
+# Db configuration file
 src/main/java/com/denkolochi/configuration/DbConstConfig.java
+
+

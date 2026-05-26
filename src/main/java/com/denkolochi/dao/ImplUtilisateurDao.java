@@ -8,7 +8,7 @@ import com.denkolochi.model.Utilisateur;
 import com.denkolochi.enumeration.RoleEnum;
 
 public class ImplUtilisateurDao implements Repository<Utilisateur, Integer>{
-    Connection con = ConnexionDB.getConexion();
+    Connection con = ConnexionDB.getInstance().getconnection();
     @Override
     public void save(Utilisateur entity) {
         //entity.toString();
@@ -156,7 +156,6 @@ public class ImplUtilisateurDao implements Repository<Utilisateur, Integer>{
     }
 
     public  boolean seConnecter(String mail, String motDePasse){
-        Connection con = ConnexionDB.getConexion();
         String sql = "SELECT * FROM utilisateurs WHERE mail = ? AND mot_de_passe = ?";
         try {
             PreparedStatement prepare = con.prepareStatement(sql);

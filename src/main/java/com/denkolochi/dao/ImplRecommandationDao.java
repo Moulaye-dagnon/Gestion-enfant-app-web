@@ -13,7 +13,7 @@ public class ImplRecommandationDao implements Repository<Recommandation, Integer
     @Override
     public void save(Recommandation entity) {
 
-        Connection con = ConnexionDB.getConexion();
+        Connection con =ConnexionDB.getInstance().getconnection();
 
         String sql = "INSERT INTO recommandation(description, date_recomm, idEvaluation, idCapacite) VALUES (?,?,?,?,?)";
         try (PreparedStatement pont = con.prepareStatement(sql)) {
