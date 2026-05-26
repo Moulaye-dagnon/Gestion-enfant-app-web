@@ -9,7 +9,7 @@ import com.denkolochi.model.Parent;
 
 public class ImplParentDAO implements Repository<Parent, Integer> {
 
-    Connection con = ConnexionDB.getConexion();
+    Connection con = ConnexionDB.getInstance().getconnection();
     @Override
     public void save(Parent entity) {
         String sql = "INSERT INTO parents VALUES (?,?)";

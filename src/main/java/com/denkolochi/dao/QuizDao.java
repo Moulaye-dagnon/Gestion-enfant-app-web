@@ -10,7 +10,7 @@ import com.denkolochi.configuration.ConnexionDB;
 import com.denkolochi.model.Quiz;
 
 public class QuizDao implements Repository<Quiz,Integer> {
-    Connection con = ConnexionDB.getConexion();
+    Connection con = ConnexionDB.getInstance().getconnection();
 
     @Override
     public void save(Quiz entity) {

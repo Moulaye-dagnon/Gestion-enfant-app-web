@@ -12,7 +12,7 @@ import com.denkolochi.model.Quiz;
 import com.denkolochi.enumeration.TypeActivitesEnum;
 
 public class ImplQuizDao implements Repository<Quiz,Integer> {
-    Connection con = ConnexionDB.getConexion();
+    Connection con = ConnexionDB.getInstance().getconnection();
 
     @Override
     public void save(Quiz entity) {
