@@ -1,145 +1,117 @@
 package com.denkolochi.model;
 
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 import com.denkolochi.enumeration.TypeActivitesEnum;
 
 public class Quiz extends Activite {
 
+	private int idQuiz;
 
-    private int idQuiz;
+	private int tempsLimitGlobal;
 
-    private int tempsLimitGlobal;
+	private int scoreMax;
 
-    private int scoreMax;
+	// =========================
+	// Constructeur vide
+	// =========================
 
-    // =========================
-    // Constructeur vide
-    // =========================
+	public Quiz() {
+		super();
+	}
 
-    public Quiz() {
-        super();
-    }
+	// =========================
+	// Constructeur simple
+	// =========================
 
-    // =========================
-    // Constructeur simple
-    // =========================
+	public Quiz(int tempsLimitGlobal, int scoreMax) {
 
-    public Quiz(int tempsLimitGlobal, int scoreMax) {
+		this.tempsLimitGlobal = tempsLimitGlobal;
+		this.scoreMax = scoreMax;
+	}
 
-        this.tempsLimitGlobal = tempsLimitGlobal;
-        this.scoreMax = scoreMax;
-    }
+	// =========================
+	// Constructeur complet
+	// =========================
 
-    // =========================
-    // Constructeur complet
-    // =========================
+	public Quiz(int idQuiz, int tempsLimitGlobal, int scoreMax,
 
-    public Quiz(
-            int idQuiz,
-            int tempsLimitGlobal,
-            int scoreMax,
+			int idActivite, String titre, String descriptions, int ageMin, int ageMax, LocalDateTime dateCreation,
+			int idCapacite, TypeActivitesEnum typeActivites) {
 
-            int idActivite,
-            String titre,
-            String descriptions,
-            int ageMin,
-            int ageMax,
-            LocalDateTime dateCreation,
-            int idCapacite,
-            TypeActivitesEnum typeActivites) {
+		super(idActivite, titre, descriptions, ageMin, ageMax, dateCreation, idCapacite, typeActivites);
 
-        super(
-                idActivite,
-                titre,
-                descriptions,
-                ageMin,
-                ageMax,
-                dateCreation,
-                idCapacite,
-                typeActivites);
+		this.idQuiz = idQuiz;
+		this.tempsLimitGlobal = tempsLimitGlobal;
+		this.scoreMax = scoreMax;
+	}
 
-        this.idQuiz = idQuiz;
-        this.tempsLimitGlobal = tempsLimitGlobal;
-        this.scoreMax = scoreMax;
-    }
+	// =========================
+	// GETTERS & SETTERS
+	// =========================
 
-    // =========================
-    // GETTERS & SETTERS
-    // =========================
+	public int getIdQuiz() {
+		return idQuiz;
+	}
 
-    public int getIdQuiz() {
-        return idQuiz;
-    }
+	public void setIdQuiz(int idQuiz) {
+		this.idQuiz = idQuiz;
+	}
 
-    public void setIdQuiz(int idQuiz) {
-        this.idQuiz = idQuiz;
-    }
+	public int getTempsLimitGlobal() {
+		return tempsLimitGlobal;
+	}
 
-    public int getTempsLimitGlobal() {
-        return tempsLimitGlobal;
-    }
+	public void setTempsLimitGlobal(int tempsLimitGlobal) {
+		this.tempsLimitGlobal = tempsLimitGlobal;
+	}
 
-    public void setTempsLimitGlobal(int tempsLimitGlobal) {
-        this.tempsLimitGlobal = tempsLimitGlobal;
-    }
+	public int getScoreMax() {
+		return scoreMax;
+	}
 
-    public int getScoreMax() {
-        return scoreMax;
-    }
+	public void setScoreMax(int scoreMax) {
+		this.scoreMax = scoreMax;
+	}
 
-    public void setScoreMax(int scoreMax) {
-        this.scoreMax = scoreMax;
-    }
+	// =========================
+	// hashCode()
+	// =========================
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(idQuiz, tempsLimitGlobal, scoreMax);
+	}
 
-    // =========================
-    // hashCode()
-    // =========================
+	// =========================
+	// equals()
+	// =========================
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(idQuiz, tempsLimitGlobal, scoreMax);
-    }
+	@Override
+	public boolean equals(Object obj) {
 
-    // =========================
-    // equals()
-    // =========================
+		if (this == obj) {
+			return true;
+		}
 
-    @Override
-    public boolean equals(Object obj) {
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
 
-        if (this == obj) {
-            return true;
-        }
+		Quiz other = (Quiz) obj;
 
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
+		return idQuiz == other.idQuiz && tempsLimitGlobal == other.tempsLimitGlobal && scoreMax == other.scoreMax;
+	}
 
-        Quiz other = (Quiz) obj;
+	// =========================
+	// toString()
+	// =========================
 
-        return idQuiz == other.idQuiz
-                && tempsLimitGlobal == other.tempsLimitGlobal
-                && scoreMax == other.scoreMax;
-    }
+	@Override
+	public String toString() {
 
-    // =========================
-    // toString()
-    // =========================
-
-    @Override
-    public String toString() {
-
-        return "Quiz{" +
-                "idQuiz=" + idQuiz +
-                ", titre='" + getTitre() + '\'' +
-                ", tempsLimitGlobal=" + tempsLimitGlobal +
-                ", scoreMax=" + scoreMax +
-                ", ageMin=" + getAgeMin() +
-                ", ageMax=" + getAgeMax() +
-                ", typeActivites=" + getTypeActivites() +
-                '}';
-    }
+		return "Quiz{" + "idQuiz=" + idQuiz + ", titre='" + getTitre() + '\'' + ", tempsLimitGlobal=" + tempsLimitGlobal
+				+ ", scoreMax=" + scoreMax + ", ageMin=" + getAgeMin() + ", ageMax=" + getAgeMax() + ", typeActivites="
+				+ getTypeActivites() + '}';
+	}
 }

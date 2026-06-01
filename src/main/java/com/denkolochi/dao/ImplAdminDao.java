@@ -10,123 +10,116 @@ import com.denkolochi.configuration.ConnexionDB;
 import com.denkolochi.model.Admins;
 import com.denkolochi.enumeration.RoleEnum;
 
-public class ImplAdminDao implements Repository <Admins , Integer> {
-    
-    Connection con = ConnexionDB.getConexion();
+public class ImplAdminDao implements Repository<Admins, Integer> {
 
-    @Override
-    public void save(Admins admin) {
-        String sql = "INSERT INTO admins VALUES (?)";
-        try (PreparedStatement pont = con.prepareStatement(sql)) {
-            pont.setInt(1, admin.getId());
-           
-            int b =pont.executeUpdate();
-            if(b > 0){
-                System.err.println("Admin inserer avec succès");
-            }
-            con.close();
-        
-        } catch (SQLException e) {
-           System.err.println("Erreur lors de l'insertion de l'admin");
-        }
-        
-    }  
-    
-    @Override
-    public Admins findById(Integer id) {
-        String sql = " SELECT * FROM admins a JOIN utilisateurs u ON a.idAdmin = u.id WHERE a.idAdmin = ? ";
+	Connection con = ConnexionDB.getInstance().getconnection();
 
-    try (PreparedStatement pont = con.prepareStatement(sql)) {
+	@Override
+	public void save(Admins admin) {
+		String sql = "INSERT INTO admins VALUES (?)";
+		try (PreparedStatement pont = con.prepareStatement(sql)) {
+			pont.setInt(1, admin.getId());
 
-        pont.setInt(1, id);
+			int b = pont.executeUpdate();
+			if (b > 0) {
+				System.err.println("Admin inserer avec succès");
+			}
+			con.close();
 
-        ResultSet rs = pont.executeQuery();
-        Admins admin = new Admins();
+		} catch (SQLException e) {
+			System.err.println("Erreur lors de l'insertion de l'admin");
+		}
 
-        if (rs.next()) {
+	}
 
-            admin.setIdAdmin(rs.getInt("idAdmin"));
-            admin.setNom(rs.getString("nom"));
-            admin.setPrenom(rs.getString("prenom"));
-            admin.setTel(rs.getString("tel"));
-            admin.setMail(rs.getString("mail"));
-            admin.setMotDePasse(rs.getString("mot_de_passe"));
-            admin.setRole(RoleEnum.valueOf(rs.getString("role")));
+	@Override
+	public Admins findById(Integer id) {
+		String sql = " SELECT * FROM admins a JOIN utilisateurs u ON a.idAdmin = u.id WHERE a.idAdmin = ? ";
 
-            return admin;
-        }
+		try (PreparedStatement pont = con.prepareStatement(sql)) {
 
-    } catch (SQLException e) {
+			pont.setInt(1, id);
 
-       System.out.println("Erreur lors de la recherche de l'admin");
-    }
+			ResultSet rs = pont.executeQuery();
+			Admins admin = new Admins();
 
-    return null;
-}
-    
+			if (rs.next()) {
 
-    @Override
-    public List<Admins> findAll() {
-        List<Admins> liste = new ArrayList<>();
+				admin.setIdAdmin(rs.getInt("idAdmin"));
+				admin.setNom(rs.getString("nom"));
+				admin.setPrenom(rs.getString("prenom"));
+				admin.setTel(rs.getString("tel"));
+				admin.setMail(rs.getString("mail"));
+				admin.setMotDePasse(rs.getString("mot_de_passe"));
+				admin.setRole(RoleEnum.valueOf(rs.getString("role")));
 
-    String sql = " SELECT * FROM admins a JOIN utilisateurs u ON a.idAdmin = u.id";
+				return admin;
+			}
 
-    try (PreparedStatement pont = con.prepareStatement(sql)) {
+		} catch (SQLException e) {
 
-        ResultSet rs = pont.executeQuery();
-       
+			System.out.println("Erreur lors de la recherche de l'admin");
+		}
 
-        while (rs.next()) {
-             Admins admin = new Admins();
-            admin.setIdAdmin(rs.getInt("idAdmin"));
-            admin.setNom(rs.getString("nom"));
-            admin.setPrenom(rs.getString("prenom"));
-            admin.setTel(rs.getString("tel"));
-            admin.setMail(rs.getString("mail"));
-            admin.setMotDePasse(rs.getString("mot_de_passe"));
-            admin.setRole(RoleEnum.valueOf(rs.getString("role")));
+		return null;
+	}
 
-            liste.add(admin);
-        }
+	@Override
+	public List<Admins> findAll() {
+		List<Admins> liste = new ArrayList<>();
 
-    } catch (SQLException e) {
+		String sql = " SELECT * FROM admins a JOIN utilisateurs u ON a.idAdmin = u.id";
 
-        System.err.println("Erreur lors de la recherche de l'admin");
-    }
+		try (PreparedStatement pont = con.prepareStatement(sql)) {
 
-    return liste;
-}
-    
+			ResultSet rs = pont.executeQuery();
 
+			while (rs.next()) {
+				Admins admin = new Admins();
+				admin.setIdAdmin(rs.getInt("idAdmin"));
+				admin.setNom(rs.getString("nom"));
+				admin.setPrenom(rs.getString("prenom"));
+				admin.setTel(rs.getString("tel"));
+				admin.setMail(rs.getString("mail"));
+				admin.setMotDePasse(rs.getString("mot_de_passe"));
+				admin.setRole(RoleEnum.valueOf(rs.getString("role")));
 
+				liste.add(admin);
+			}
 
-    @Override
-    public void delete(Integer id) {
-        
+		} catch (SQLException e) {
 
-    String sql = "DELETE FROM admins WHERE idAdmin=?";
+			System.err.println("Erreur lors de la recherche de l'admin");
+		}
 
-    try (PreparedStatement pont = con.prepareStatement(sql)) {
+		return liste;
+	}
 
-        pont.setInt(1, id);
+	@Override
+	public void delete(Integer id) {
 
-        int b = pont.executeUpdate();
+		String sql = "DELETE FROM admins WHERE idAdmin=?";
 
-        if (b > 0) {
-            System.out.println("Admins supprimé");
-        }
+		try (PreparedStatement pont = con.prepareStatement(sql)) {
 
-    } catch (SQLException e) {
+			pont.setInt(1, id);
 
-        System.err.println("Erreur lors de la suppression de l'admin");
-    }
+			int b = pont.executeUpdate();
 
-}
+			if (b > 0) {
+				System.out.println("Admins supprimé");
+			}
 
-    @Override
-    public void update(Integer id, Admins entity) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+		} catch (SQLException e) {
 
+			System.err.println("Erreur lors de la suppression de l'admin");
+		}
+
+	}
+
+	@Override
+	public void update(Integer id, Admins entity) {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 
 }
