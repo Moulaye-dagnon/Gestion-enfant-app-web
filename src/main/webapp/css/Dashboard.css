@@ -1,0 +1,507 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Roboto', sans-serif;
+    background:#f5f5f5;
+}
+
+/* Conteneur */
+
+.conteneur{
+    display:flex;
+    min-height:100vh;
+}
+
+/* barre de gauche */
+
+.barreLaterale{
+    width:260px;
+    background:white;
+    padding:25px;
+    border-right:1px solid #e5e5e5;
+}
+
+.logo{
+    margin-bottom:40px;
+}
+
+.logo img{
+    width:170px;
+}
+
+/* Menu */
+
+nav ul{
+    list-style:none;
+}
+
+nav ul li{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px;
+    margin-bottom:12px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:16px;
+    font-weight:500;
+}
+
+nav ul li:hover{
+    background:#f3f3f3;
+}
+
+nav ul li i{
+    font-size:18px;
+}
+
+nav ul li.actif{
+    background:#eef8f0;
+    color:#2E9E3E;
+    border:1px solid #b9dfbf;
+}
+
+/* Contenu princ */
+
+.contenuPrincipal{
+    flex:1;
+    padding:30px;
+}
+
+/* entete */
+
+.entete{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.entete h2{
+    font-size:20px;
+    color:#2E9E3E;
+    margin-bottom:8px;
+}
+
+.entete p{
+    font-size:16px;
+}
+#main{
+    color: #F7941D;
+}
+
+.iconeNotification{
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* statistiques */
+
+.grilleStatistiques{
+    display:grid;
+    grid-template-columns:2fr repeat(4,1fr);
+    gap:15px;
+    margin-bottom:30px;
+}
+
+/* cards */
+
+.carte,
+.carteMoyenne,
+.carteEnfant,
+.carteAction,
+.activites{
+    background:white;
+    border-radius:16px;
+    border:1px solid #e5e5e5;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+
+/* Cards enfants */
+
+.carte{
+    padding:20px;
+}
+
+.titreCarte{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.carte button{
+    margin-top:15px;
+    padding:12px 16px;
+    border:none;
+    background:#2E9E3E;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight: bold;
+    width: 300px;
+    font-size: 16px;
+}
+
+/* Moyenne */
+
+.carteMoyenne{
+    padding:18px;
+}
+
+.hautMoyenne{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.hautMoyenne span{
+    color:#2E9E3E;
+}
+.hautMoyenne i{
+    color:#2E9E3E;
+}
+.orange span{
+    color:#F7941D;
+}
+
+.clair span{
+    color:#8CC63F;
+}
+.clair i{
+    color:#8CC63F;
+}
+
+.bleu span{
+    color:#1E88E5;
+}
+.bleu i{
+    color:#1E88E5;
+}
+
+.carteMoyenne p{
+    font-size:14px;
+    margin-bottom:15px;
+}
+.orange i{
+    color: #F7941D;
+
+}
+
+.ligne{
+    height:3px;
+    border-radius:10px;
+    background:#2E9E3E;
+}
+
+.orangeLigne{
+    background:#F7941D;
+}
+
+.clairLigne{
+    background:#8CC63F;
+}
+
+.bleuLigne{
+    background:#1E88E5;
+}
+
+/* SECTION ENFANTS */
+
+.sectionEnfants{
+    margin-bottom:30px;
+}
+
+.sectionEnfants h3{
+    margin-bottom:20px;
+}
+
+.listeEnfants{
+    display:flex;
+    gap:20px;
+    align-items:center;       /* Force l'alignement horizontal (en ligne) */
+    flex-direction: row;    /* Aligne les éléments de gauche à droite */
+               /* Crée un espace de 20px entre les deux cartes */
+    flex-wrap: wrap;        /* Si l'écran est trop petit, passe à la ligne proprement */
+      /* Aligne verticalement les cartes au centre */
+}
+
+
+.carteEnfant{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    width:290px;
+    transition:0.3s;
+}
+
+.carteEnfant:hover{
+    transform:translateY(-3px);
+}
+
+.carteEnfant img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.scores{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    margin-top:10px;
+    font-size:12px;
+}
+
+.scoreVert{
+    color:#2E9E3E;
+}
+
+.scoreOrange{
+    color:#F7941D;
+}
+
+.scoreClair{
+    color:#8CC63F;
+}
+
+.scoreBleu{
+    color:#1E88E5;
+}
+#iconeVert{
+    color: #2E9E3E;
+}
+#iconeOrange{
+    color: #F7941D;
+}
+#iconeClair{
+    color: #8CC63F;
+}
+#iconeBleu{
+    color:#1E88E5;
+}
+
+/* Ajouter enfants */
+
+.ajouterEnfant{
+    width:300px;
+    height:120px;
+    border:2px dashed #cfcfcf;
+    border-radius:16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    color:#2E9E3E;
+    cursor:pointer;
+}
+
+/* Actions */
+
+.sectionActions{
+    margin-bottom:30px;
+}
+
+.sectionActions h3{
+    margin-bottom:20px;
+}
+
+.grilleActions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.carteAction{
+    padding:20px;
+    transition:0.3s;
+}
+
+.carteAction:hover{
+    transform:translateY(-5px);
+}
+
+.carteAction h4{
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.carteAction p{
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+
+.carteAction button{
+    padding:12px 16px;
+    border-radius:8px;
+    background:white;
+    cursor:pointer;
+    font-weight:bold;
+    width: 150px;
+    align-items: center; 
+}
+
+/* Couleurs actions */
+
+.quiz button{
+    color: #2E9E3E;
+    border:1px solid #2E9E3E;
+    margin-left: 25px;
+}
+.quiz h4{
+    color: #2E9E3E;
+}
+
+.exercices button{
+    color: #F7941D;
+    border:1px solid #F7941D;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+.exercices h4{
+    color: #F7941D;
+}
+
+.jeux button{
+    color: #8CC63F;
+    border:1px solid #8CC63F;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.jeux h4{
+    color: #8CC63F;
+}
+
+.progres h4{
+    color:#1E88E5;
+}
+
+.progres button{
+    color:#1E88E5;
+    border:1px solid #1E88E5;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+/* Activites */
+
+.activites{
+    padding:20px;
+}
+
+.hautActivites{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.hautActivites a{
+    color:#2E9E3E;
+    text-decoration:none;
+    font-weight:500;
+    margin-right: 610px;
+}
+
+.activite{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+
+}
+.activite p{
+    opacity: 68%;
+}
+
+.activite h4{
+    margin-bottom:8px;
+}
+
+.detailsActivite{
+    text-align:right;
+}
+.detailsActivite p{
+    margin-left: 500px;
+}
+#iconeQuiz{
+    color: #2E9E3E;
+}
+#iconeMemoire{
+    color: #F7941D;
+}
+
+.complete{
+    color:#2E9E3E;
+    margin-right: 400px;
+    margin-left: 60px;
+}
+
+.revoir{
+    color:#F7941D;
+    margin-right: 412px;
+    margin-left: 60px;
+}
+#imgFooter{
+	width:170px;
+	position:relative;
+	top:-70%;
+	
+	
+}
+
+
+/* Responsivites */
+
+@media screen and (max-width: 992px){
+
+    .grilleStatistiques{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .grilleActions{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .listeEnfants{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media screen and (max-width: 768px){
+
+    .conteneur{
+        flex-direction:column;
+    }
+
+    .barreLaterale{
+        width:100%;
+    }
+
+    .grilleStatistiques{
+        grid-template-columns:1fr;
+    }
+
+    .grilleActions{
+        grid-template-columns:1fr;
+    }
+
+    .entete{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+}
