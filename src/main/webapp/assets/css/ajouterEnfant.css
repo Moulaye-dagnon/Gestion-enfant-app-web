@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+
+:root{
+    --primary:#2E9E3E;
+    --primary-light:#EAF6EA;
+    --secondary:#F5B700;
+    --danger:#EF4444;
+    --text:#1F2937;
+    --text-light:#6B7280;
+    --border:#E5E7EB;
+    --bg:#F8FAF8;
+    --white:#FFFFFF;
+}
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
