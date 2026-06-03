@@ -39,9 +39,6 @@ public class Question {
 		this.id_questions = id_questions;
 	}
 
-	public void setQuestions(List<Question> questions) {
-	    this.questions = questions;
-	}
 	public String getEnonce() {
 		return enonce;
 	}
