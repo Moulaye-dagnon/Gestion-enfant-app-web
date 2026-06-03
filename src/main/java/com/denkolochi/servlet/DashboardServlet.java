@@ -19,7 +19,7 @@ public class DashboardServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.getRequestDispatcher(
-                "/WEB-INF/views/dashboard.jsp")
+                "WEB-INF/views/dashboard.jsp")
                 .forward(request, response);
     }
 }

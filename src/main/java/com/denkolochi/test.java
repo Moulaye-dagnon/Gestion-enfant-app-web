@@ -1,6 +1,6 @@
-package com.denkolochi.servlet;
+package com.denkolochi;
 
-import jakarta.servlet.ServletException; 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class ajouterEnfantServlet
+ * Servlet implementation class test
  */
-@WebServlet("/ajouterEnfant")
-public class ajouterEnfantServlet extends HttpServlet {
+@WebServlet("/test")
+public class test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ajouterEnfantServlet() {
+    public test() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +27,7 @@ public class ajouterEnfantServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		   request.getRequestDispatcher(
-	                "/WEB-INF/views/ajouterEnfant.jsp")
-	                .forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
