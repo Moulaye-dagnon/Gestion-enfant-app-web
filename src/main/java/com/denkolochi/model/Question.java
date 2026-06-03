@@ -22,6 +22,15 @@ public class Question {
 		this.id_capacite = id_capacite;
 	}
 
+	public void setOptions(List<Option> options) {
+		this.options = options;
+	}
+
+	public List<Option> getOptions() {
+	    return options;
+	}
+
+
 	public int getId_questions() {
 		return id_questions;
 	}
@@ -30,9 +39,6 @@ public class Question {
 		this.id_questions = id_questions;
 	}
 
-	public void setQuestions(List<Question> questions) {
-	    this.questions = questions;
-	}
 	public String getEnonce() {
 		return enonce;
 	}
